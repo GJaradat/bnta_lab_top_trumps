@@ -58,14 +58,9 @@ public class TopTrumpsService {
         return true;
     }
 
-    public void removePlayedCards(ArrayList<Card> cards){
-        for (Card card : cards){
-            this.deck.remove(card);
+    public void removePlayedCards(ArrayList<Card> cards) {
+        for (Card card : cards) {
+            this.deck.removeIf(deckCard -> (card.getRank() == (deckCard.getRank())) && (card.getSuit() == (deckCard.getSuit())));
         }
     }
-
-
-
-
 }
-
