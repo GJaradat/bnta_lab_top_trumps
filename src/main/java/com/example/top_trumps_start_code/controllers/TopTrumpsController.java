@@ -14,14 +14,29 @@ import java.util.ArrayList;
 @RequestMapping(value = "/toptrumps")
 public class TopTrumpsController {
 
-    private String round;
 
     @Autowired
     TopTrumpsService service;
+
     @PostMapping
+    public ResponseEntity<Reply> newGame(){
+        service.createDeck();
+        return new ResponseEntity<>(new Reply("Started a new game"), HttpStatus.CREATED);
+    }
+
+    @PatchMapping
     public ResponseEntity<Reply> newRound(@RequestBody ArrayList<Card> cards){
-        Reply reply = new Reply(service.checkWinner(cards));
-        return new ResponseEntity<Reply>(reply, HttpStatus.CREATED);
+        // play if cards are in deck
+        if (service.cardsAreInDeck(cards)) {
+            //remove cards from deck
+            service.removePlayedCards(cards);
+
+            //check who's the winner
+            Reply reply = new Reply(service.checkWinner(cards));
+            return new ResponseEntity<>(reply, HttpStatus.ACCEPTED);
+        }
+        //if cards are not in the deck
+        return new ResponseEntity<>(new Reply(String.format("This card has already been played! Current deck size: %d",service.getDeck().size())), HttpStatus.NOT_FOUND);
     }
 
 
