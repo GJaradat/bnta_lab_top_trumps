@@ -16,7 +16,7 @@ public class TopTrumpsController {
 
     private String round;
 
-//    @Autowired
+    @Autowired
     TopTrumpsService service;
     @PostMapping
     public ResponseEntity<Reply> newRound(@RequestBody ArrayList<Card> cards){

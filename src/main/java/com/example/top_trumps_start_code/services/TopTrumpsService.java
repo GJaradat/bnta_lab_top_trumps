@@ -1,9 +1,11 @@
 package com.example.top_trumps_start_code.services;
 
 import com.example.top_trumps_start_code.models.Card;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+@Service
 public class TopTrumpsService {
 
 
