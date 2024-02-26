@@ -20,17 +20,9 @@ public class TopTrumpsController {
     TopTrumpsService service;
     @PostMapping
     public ResponseEntity<Reply> newRound(@RequestBody ArrayList<Card> cards){
-        Reply reply = new Reply("Round started. Played hand");
-
+        Reply reply = new Reply(service.checkWinner(cards));
         return new ResponseEntity<Reply>(reply, HttpStatus.CREATED);
     }
-
-    @PatchMapping
-    public ResponseEntity<Reply> checkWinner(ArrayList<Card> cards) {
-        Reply reply = new Reply(service.checkWinner(cards));
-
-        return new ResponseEntity<Reply>(reply, HttpStatus.OK);
-    }
-
+    
 
 }
