@@ -13,7 +13,7 @@ public class TopTrumpsService {
         if (cards.get(0).getCardValue() > cards.get(1).getCardValue()) {
             return cards.get(0).getRank() + " of " + cards.get(0).getSuit() + " wins!";
         } else if (cards.get(0).getCardValue() == cards.get(1).getCardValue()) {
-            return "This is a draw.";
+            return String.format("Both players played %ss",cards.get(0).getRank());
         }
         return cards.get(1).getRank() + " of " + cards.get(1).getSuit() + " wins!";
     }

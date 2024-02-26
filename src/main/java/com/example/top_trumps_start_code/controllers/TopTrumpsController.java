@@ -23,6 +23,6 @@ public class TopTrumpsController {
         Reply reply = new Reply(service.checkWinner(cards));
         return new ResponseEntity<Reply>(reply, HttpStatus.CREATED);
     }
-    
+
 
 }
