@@ -22,4 +22,5 @@ public class TopTrumpsController {
         return new ResponseEntity<Reply>(reply, HttpStatus.CREATED);
     }
 
+
 }
